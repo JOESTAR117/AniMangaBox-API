@@ -109,7 +109,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type":"object"
+                                    "type": "object"
                                 }
                             }
                         }
@@ -117,23 +117,135 @@
                 }
             }
         },
-        "/user/{id}":{
-            "delete":{
-                "summary":"Delete a User",
+        "/user/{id}": {
+            "delete": {
+                "summary": "Delete a User",
                 "description": "Route responsible for deleting a User",
-                "tags":["Users"],
-                "parameters":[
+                "tags": [
+                    "Users"
+                ],
+                "parameters": [
                     {
-                        "in":"path",
-                        "name":"id",
-                        "type":"string",
-                        "description":"User ID",
-                        "required":true
+                        "in": "path",
+                        "name": "id",
+                        "type": "string",
+                        "description": "User ID",
+                        "required": true
                     }
                 ],
-                "responses":{
-                    "204":{
-                        "description":"OK"
+                "responses": {
+                    "204": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/anime": {
+            "post": {
+                "summary": "Create a new anime",
+                "description": "Route responsible for creating a new anime",
+                "tags": [
+                    "Animes"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "examples": {
+                                "anime": {
+                                    "value": {
+                                        "title": "Attack on Titan",
+                                        "description": "When man-eating Titans first appeared 100 years ago, humans found safety behind massive walls that stopped the giants in their tracks. But the safety they have had for so long is threatened when a colossal Titan smashes through the barriers, causing a flood of the giants into what had been the humans' safe zone. During the carnage that follows, soldier Eren Jaeger sees one of the creatures devour his mother, which leads him to vow that he will kill every Titan. He enlists some friends who survived to help him, and that group is humanity's last hope for avoiding extinction at the hands of the monsters.",
+                                        "episodes": "97",
+                                        "release_date": "2013-04-07T16:53:52.899Z"
+                                    }
+                                },
+                                "responses": {
+                                    "201": {
+                                        "description": "Created",
+                                        "content": {
+                                            "application/json": {
+                                                "schema": {
+                                                    "type": "object"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/anime/": {
+            "get": {
+                "summary": "Search all animes",
+                "description": "Route responsible for fetching all animes",
+                "tags": [
+                    "Animes"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/anime/{id}": {
+            "patch": {
+                "summary": "Update a Anime",
+                "description": "Route responsible for updating a Anime",
+                "tags": [
+                    "Animes"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string",
+                        "description": "Post ID",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "examples": {
+                                "Post": {
+                                    "value": {
+                                        "title": "Attack on Titan",
+                                        "description": "After his city is destroyed and his mother is killed, a young man vows to cleanse the earth of the humanoids who have driven humanity to the brink of extinction.",
+                                        "episodes": "97",
+                                        "release_date": "2013-04-07T16:53:52.899Z"
+                                    },
+                                    "responses": {
+                                        "400": {
+                                            "description": "Not Found"
+                                        },
+                                        "200": {
+                                            "description": "OK",
+                                            "content": {
+                                                "application/json": {
+                                                    "schema": {
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }

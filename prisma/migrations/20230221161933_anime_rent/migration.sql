@@ -12,7 +12,7 @@ CREATE TABLE "animes" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
-    "duration" TEXT NOT NULL,
+    "episodes" TEXT NOT NULL,
     "release_date" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "animes_pkey" PRIMARY KEY ("id")

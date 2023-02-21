@@ -1,0 +1,142 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Animes API Documentation",
+        "description": "In this documentation you can consult the API endpoints and also test all available routes.",
+        "contact": {
+            "email": "juniorrios1231@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "server": [
+        {
+            "url": "https://alugueis-animes-djjy1r050-joestar117.vercel.app",
+            "description": "Vercel server"
+        }
+    ],
+    "paths": {
+        "/user/": {
+            "post": {
+                "summary": "Create a new user",
+                "description": "Route responsible for creating a new user",
+                "tags": [
+                    "Users"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "examples": {
+                                "Users": {
+                                    "value": {
+                                        "name": "Name",
+                                        "email": "name@gmail.com"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "response": {
+                    "400": {
+                        "description": "Not Found"
+                    },
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/user": {
+            "get": {
+                "summary": "Search all users",
+                "description": "Route responsible for fetching all users",
+                "tags": [
+                    "Users"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/{id}/": {
+            "patch": {
+                "summary": "Update user by id",
+                "description": "Route responsible for editing the user by id",
+                "tags": [
+                    "Users"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string",
+                        "description": "User ID",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "examples": {
+                                "Users": {
+                                    "value": {
+                                        "name": "Name",
+                                        "email": "name@gmail.com"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "response": {
+                    "400": {
+                        "description": "Not Found"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type":"object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/{id}":{
+            "delete":{
+                "summary":"Delete a User",
+                "description": "Route responsible for deleting a User",
+                "tags":["Users"],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "name":"id",
+                        "type":"string",
+                        "description":"User ID",
+                        "required":true
+                    }
+                ],
+                "responses":{
+                    "204":{
+                        "description":"OK"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -6,7 +6,11 @@ export class FindAllAnimeController {
     try {
       const animes = await database.anime.findMany({
         include: {
-          AnimeRent: true,
+          AnimeRent: {
+            select: {
+              user: true,
+            },
+          },
         },
       });
       return res.status(200).json(animes);

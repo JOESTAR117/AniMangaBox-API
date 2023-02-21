@@ -5,7 +5,11 @@ export class FindAllUsersControllers {
   async handle(req: Request, res: Response) {
     const users = await database.user.findMany({
       include: {
-        AnimeRent: true,
+        AnimeRent: {
+          select:{
+            anime:true
+          }
+        }
       },
     });
 

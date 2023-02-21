@@ -7,7 +7,7 @@ export class FindAllUsersControllers {
       include: {
         AnimeRent: {
           select:{
-            anime:true
+            animeId:true
           }
         }
       },

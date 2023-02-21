@@ -12,8 +12,14 @@ export class CreateAnimeRentControllers {
         },
       });
 
-      if (!animeExists) {
-        return res.status(400).json({ message: "Anime does not exists!" });
+      const userExists = await database.user.findUnique({
+        where:{
+            id: userId,
+        }
+      })
+
+      if (!animeExists || !userExists) {
+        return res.status(400).json({ message: "Anime or user does not exist!" });
       }
 
       await database.animeRent.create({

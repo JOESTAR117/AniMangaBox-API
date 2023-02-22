@@ -16,15 +16,33 @@ model User {
   name      String
   email     String      @unique
   AnimeRent AnimeRent[]
+  tokens    Token[]
 
   @@map("users")
+}
+
+model Token {
+  id         String    @id @default(uuid())
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  type       TokenType
+  emailToken String?   @unique
+  valid      Boolean
+  expiration DateTime
+  User       User?     @relation(fields: [userId], references: [id])
+  userId     String?
+}
+
+enum TokenType {
+  EMAIL
+  API
 }
 
 model Anime {
   id           String      @id @default(uuid())
   title        String
   description  String
-  episodes    String
+  episodes     String
   release_date DateTime
   AnimeRent    AnimeRent[]
 

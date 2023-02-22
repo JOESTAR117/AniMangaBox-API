@@ -9,7 +9,7 @@ const findAllUsersController = new FindAllUsersControllers();
 const updateUserController = new UpdateUserController();
 const deleteUserController = new DeleteUsersControllers();
 
-const user = Router();
+const user= Router();
 
 user.post("/user", createUserController.handle);
 user.get("/user", findAllUsersController.handle);

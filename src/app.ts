@@ -1,4 +1,4 @@
-import express from "express";
+import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 import { swagger } from "./routes/swagger.Routes";
 import { anime } from "./routes/Anime.Routes";

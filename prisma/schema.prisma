@@ -24,7 +24,7 @@ model Anime {
   id           String      @id @default(uuid())
   title        String
   description  String
-  episodes    String
+  episodes     String
   release_date DateTime
   AnimeRent    AnimeRent[]
 

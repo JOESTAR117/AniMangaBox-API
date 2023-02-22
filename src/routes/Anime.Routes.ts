@@ -4,7 +4,7 @@ import { DeleteAnimeController } from "../modules/Anime/DeleteAnime/DeleteAnimeC
 import { FindAllAnimeController } from "../modules/Anime/FindAllAnime/FindAllAnimeControllers";
 import { UpdateAnimeControllers } from "../modules/Anime/updateAnime/UpdateAnimeControllers";
 import { CreateAnimeRentControllers } from "../modules/Anime_Rent/CreateAnimeRent/CreateAnimeRentControllers";
-import { DeleteAnimeRentControllers } from "../modules/Anime_Rent/CreateAnimeRent/DeleteAnimeRentControllers";
+import { DeleteAnimeRentControllers } from "../modules/Anime_Rent/DeleteAnimeRent/DeleteAnimeRentControllers";
 
 const createAnimeControllers = new CreateAnimeControllers();
 const findAllAnimeControllers = new FindAllAnimeController();

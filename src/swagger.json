@@ -249,6 +249,27 @@
                     }
                 }
             }
+        },
+        "/anime/{id}/":{
+            "delete":{
+                "summary":"Delete a Anime",
+                "description":"Route responsible for deleting a Anime",
+                "tags":["Animes"],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "name":"id",
+                        "type":"string",
+                        "description":"Anime ID",
+                        "required":true
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK"
+                    }
+                }
+            }
         }
     }
 }

@@ -24,6 +24,21 @@ export class DeleteAnimeRentControllers {
           .json({ message: "Anime or user does not exist!" });
       }
 
+      const animeWasRented = await database.animeRent.findUnique({
+        where: {
+          userId_animeId: {
+            animeId: animeId,
+            userId: userId,
+          },
+        },
+      });
+
+      if (!animeWasRented) {
+        return res
+          .status(400)
+          .json({ message: "this anime has not been rented" });
+      }
+
       await database.animeRent.delete({
         where: {
           userId_animeId: {
@@ -33,7 +48,9 @@ export class DeleteAnimeRentControllers {
         },
       });
 
-      return res.status(200).json({ message: `you ended your subscription with the anime ${animeId}` });
+      return res.status(200).json({
+        message: `you ended your subscription with the anime ${animeId}`,
+      });
     } catch (error) {
       console.error(error);
     }

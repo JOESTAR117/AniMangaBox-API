@@ -1,19 +1,16 @@
 import { Request, Response } from "express";
-import { database } from "../../../database/database";
 import { UserDTO } from "../UserDto";
+import { CreateUserUseCase } from "./CreateUserUseCase";
 
 export class CreateUserController {
   async handle(req: Request, res: Response) {
     const { name, email }: UserDTO = req.body;
     try {
-      const user = await database.user.create({
-        data: {
-          name: name,
-          email: email,
-        },
-      });
+      const createUserUseCases = new CreateUserUseCase();
 
-      return res.status(201).json(user);
+      const result = await createUserUseCases.execute({ name, email });
+
+      return res.status(201).json(result);
     } catch (error) {
       console.error(error);
     }

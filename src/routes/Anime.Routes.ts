@@ -10,7 +10,7 @@ const findAllAnimeControllers = new FindAllAnimeController();
 const updateAnimeControllers = new UpdateAnimeControllers();
 const deleteAnimeControllers = new DeleteAnimeController();
 
-const createAnimeRentControllers = new CreateAnimeRentControllers()
+const createAnimeRentControllers = new CreateAnimeRentControllers();
 
 const anime = Router();
 
@@ -19,6 +19,6 @@ anime.get("/anime", findAllAnimeControllers.handle);
 anime.patch("/anime/:id", updateAnimeControllers.handle);
 anime.delete("/anime/:id", deleteAnimeControllers.handle);
 
-anime.post("/anime/rent",createAnimeRentControllers.handle)
+anime.post("/anime/rent", createAnimeRentControllers.handle);
 
 export { anime };

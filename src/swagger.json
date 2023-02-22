@@ -69,7 +69,7 @@
                 }
             }
         },
-        "/user/{id}/": {
+        "/user/{id}": {
             "patch": {
                 "summary": "Update user by id",
                 "description": "Route responsible for editing the user by id",
@@ -117,7 +117,7 @@
                 }
             }
         },
-        "/user/{id}": {
+        "/user/{id}/": {
             "delete": {
                 "summary": "Delete a User",
                 "description": "Route responsible for deleting a User",
@@ -134,7 +134,7 @@
                     }
                 ],
                 "responses": {
-                    "204": {
+                    "200": {
                         "description": "OK"
                     }
                 }
@@ -296,6 +296,39 @@
                                 }
                             }
                         }
+                    }
+                }
+            }
+        },
+        "/anime/rent/{animeId}/{userId}": {
+            "delete": {
+                "summary": "ends the anime rental",
+                "description": "Route responsible for ends the anime rental",
+                "tags": [
+                    "Animes_Rent"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "animeId",
+                        "type": "string",
+                        "description": "Anime ID",
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "userId",
+                        "type": "string",
+                        "description": "user ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "You ended your subscription with the anime "
+                    },
+                    "400": {
+                        "description": "this anime has not been rented"
                     }
                 }
             }

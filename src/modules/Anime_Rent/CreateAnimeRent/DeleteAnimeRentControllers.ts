@@ -1,11 +1,10 @@
 import { Request, Response } from "express";
 import { database } from "../../../database/database";
-import { user } from "../../../routes/User.Routes";
 import { AnimeRentDTO } from "../AnimeRentDTO";
 
-export class CreateAnimeRentControllers {
+export class DeleteAnimeRentControllers {
   async handle(req: Request, res: Response) {
-    const { animeId, userId }: AnimeRentDTO = req.body;
+    const { animeId, userId } = req.params;
     try {
       const animeExists = await database.anime.findUnique({
         where: {
@@ -34,18 +33,24 @@ export class CreateAnimeRentControllers {
         },
       });
 
-      if(animeWasRented){
-        return res.status(400).json({ message: "this anime has already been rented by you"})
+      if (!animeWasRented) {
+        return res
+          .status(400)
+          .json({ message: "this anime has not been rented" });
       }
 
-      await database.animeRent.create({
-        data: {
-          animeId,
-          userId,
+      await database.animeRent.delete({
+        where: {
+          userId_animeId: {
+            animeId: animeId,
+            userId: userId,
+          },
         },
       });
 
-      return res.status(200).json({ message: "you rented the anime" });
+      return res.status(200).json({
+        message: `you ended your subscription with the anime ${animeId}`,
+      });
     } catch (error) {
       console.error(error);
     }

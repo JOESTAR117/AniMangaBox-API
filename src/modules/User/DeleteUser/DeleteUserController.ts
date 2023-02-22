@@ -15,6 +15,16 @@ export class DeleteUsersControllers {
         return res.status(400).json({ message: "User not found" });
       }
 
+      const userHasRentedAnime = await database.animeRent.findMany({
+        where: {
+          userId: id,
+        },
+      });
+
+      if (userHasRentedAnime.length > 0) {
+        return res.status(400).json({ message: "user has rented anime" });
+      }
+
       await database.user.delete({
         where: {
           id: id,

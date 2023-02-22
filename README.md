@@ -1,6 +1,29 @@
 # alugueis-animes-api
 API para criações de animes e usuarios, e com o sistema de alugar animes para assistir, com diversas informações da obra
 
+
+
+<h1 align="center">
+<br>Api para documentação
+</h1>
+
+<p>https://api-animes-rent.onrender.com/doc</p>
+
+<h1 align="center">
+<br>Api para uso
+</h1>
+
+<p>https://alugueis-animes-api-git-dev-joestar117.vercel.app/user</p>
+
+
+<br>
+<br>
+<br>
+<br>
+
+
+
+
 <h1 align="center">
 📄<br>Padrões de commits 
 </h1>

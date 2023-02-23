@@ -12,7 +12,7 @@ export class CreateAnimeRentControllers {
         userId,
       });
 
-      return res.status(201).json(result);
+      return res.status(201).json({message: `you rented this anime, enjoy`});
     } catch (error) {
       console.error(error);
     }

@@ -9,7 +9,7 @@ export class FindAllAnimeUseCase {
             select: {
               user: {
                 select: {
-                  name: true,
+                  email:true,
                   id: true,
                 },
               },

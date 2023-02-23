@@ -1,56 +1,18 @@
 import { Request, Response } from "express";
-import { database } from "../../../database/database";
-import { AnimeRentDTO } from "../AnimeRentDTO";
+import { DeleteAnimeRentUseCase } from "./DeleteAnimeRentUseCase";
 
 export class DeleteAnimeRentControllers {
   async handle(req: Request, res: Response) {
     const { animeId, userId } = req.params;
     try {
-      const animeExists = await database.anime.findUnique({
-        where: {
-          id: animeId,
-        },
+      const deleteAnimeRentUseCase = new DeleteAnimeRentUseCase();
+
+      const result = await deleteAnimeRentUseCase.execute({
+        animeId,
+        userId,
       });
 
-      const userExists = await database.user.findUnique({
-        where: {
-          id: userId,
-        },
-      });
-
-      if (!animeExists || !userExists) {
-        return res
-          .status(400)
-          .json({ message: "Anime or user does not exist!" });
-      }
-
-      const animeWasRented = await database.animeRent.findUnique({
-        where: {
-          userId_animeId: {
-            animeId: animeId,
-            userId: userId,
-          },
-        },
-      });
-
-      if (!animeWasRented) {
-        return res
-          .status(400)
-          .json({ message: "this anime has not been rented" });
-      }
-
-      await database.animeRent.delete({
-        where: {
-          userId_animeId: {
-            animeId: animeId,
-            userId: userId,
-          },
-        },
-      });
-
-      return res.status(200).json({
-        message: `you ended your subscription with the anime ${animeId}`,
-      });
+      return res.status(200).json({message: `you ended the lease with this anime`});
     } catch (error) {
       console.error(error);
     }

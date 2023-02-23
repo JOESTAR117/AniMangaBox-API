@@ -7,7 +7,7 @@ export class UpdateAnimeUseCase {
     try {
       const animeExists = await database.anime.findUnique({
         where: {
-          id:id
+          id: id,
         },
       });
 

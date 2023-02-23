@@ -8,7 +8,15 @@ export class FindAllUserUseCase {
           id: true,
           name: true,
           email: true,
-          AnimeRent: true,
+          AnimeRent: {
+            select: {
+              anime: {
+                select: {
+                  title: true,
+                },
+              },
+            },
+          },
         },
       });
 

@@ -31,7 +31,7 @@ export class AuthenticateUserController {
       }
 
       const token = jwt.sign({ id: id }, Token, {
-        expiresIn: "1d",
+        expiresIn: 86400,
       });
 
       res.status(200).json(token);

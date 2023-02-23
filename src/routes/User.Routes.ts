@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { Auth } from "../middlewares/Auth";
 import { AuthenticateUserController } from "../modules/AuthenticateUser/AuthenticateUserControllers";
 import { CreateUserController } from "../modules/User/CreateUser/CreateUserControllers";
 import { FindAllUsersControllers } from "../modules/User/findAllUser/FindAllUserControollers";
@@ -12,8 +13,8 @@ const authenticateUserController = new AuthenticateUserController();
 const user = Router();
 
 user.post("/", createUserController.handle);
-user.get("/", findAllUsersController.handle);
-user.post("/login",authenticateUserController.handle)
+user.get("/", Auth, findAllUsersController.handle);
+user.post("/login", authenticateUserController.handle);
 
 user.patch("/:id", updateUserController.handle);
 

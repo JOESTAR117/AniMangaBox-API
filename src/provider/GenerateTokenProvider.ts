@@ -6,7 +6,7 @@ export class GenerateTokenProvider {
   async execute(userId: string) {
     const token = jwt.sign({ id: userId }, Token, {
       subject: userId,
-      expiresIn: 86400,
+      expiresIn: 1800,
     });
 
     return token;

@@ -16,10 +16,10 @@ const refreshTokenUserController = new RefreshTokenUserController();
 const user = Router();
 
 user.post("/", createUserController.handle);
-user.get("/", Auth, findAllUsersController.handle);
+user.get("/", findAllUsersController.handle);
 user.post("/login", authenticateUserController.handle);
 user.post("/refresh-token", refreshTokenUserController.handle);
 
-user.patch("/:id", updateUserController.handle);
+user.patch("/:id", Auth, updateUserController.handle);
 
 export { user };

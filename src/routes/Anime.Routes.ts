@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { Auth } from "../middlewares/Auth";
 import { CreateAnimeControllers } from "../modules/Anime/CreateAnime/CreateAnimeControllers";
 import { FindAllAnimeController } from "../modules/Anime/FindAllAnime/FindAllAnimeControllers";
 import { UpdateAnimeControllers } from "../modules/Anime/updateAnime/UpdateAnimeControllers";
@@ -18,7 +19,7 @@ anime.post("/", createAnimeControllers.handle);
 anime.get("/", findAllAnimeControllers.handle);
 anime.patch("/:id", updateAnimeControllers.handle);
 
-anime.post("/rent", createAnimeRentControllers.handle);
-anime.delete("/rent/:animeId/:userId", deleteAnimeRentControllers.handle);
+anime.post("/rent", Auth,createAnimeRentControllers.handle);
+anime.delete("/rent/:animeId/:userId",Auth, deleteAnimeRentControllers.handle);
 
 export { anime };

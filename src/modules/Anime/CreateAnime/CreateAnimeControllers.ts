@@ -1,31 +1,20 @@
 import { Request, Response } from "express";
-import { database } from "../../../database/database";
-import { AnimeDTO } from "../AnimeDTO";
+import { CreateAnimeUseCase } from "./CreateAnimeUseCase";
 
 export class CreateAnimeControllers {
   async handle(req: Request, res: Response) {
-    const { title, description, episodes, release_date }: AnimeDTO = req.body;
+    const { title, description, episodes, release_date } = req.body;
     try {
-      const animeExists = await database.anime.findFirst({
-        where: {
-          title: title,
-        },
+      const createAnimeUseCase = new CreateAnimeUseCase();
+
+      const result = await createAnimeUseCase.execute({
+        title,
+        description,
+        episodes,
+        release_date,
       });
 
-      if (animeExists) {
-        return res.status(400).json({ message: "Anime already exists" });
-      }
-
-      const anime = await database.anime.create({
-        data: {
-          title: title,
-          description: description,
-          episodes: episodes,
-          release_date: release_date,
-        },
-      });
-
-      return res.status(201).json(anime);
+      return res.status(201).json({ result });
     } catch (error) {
       console.error(error);
     }

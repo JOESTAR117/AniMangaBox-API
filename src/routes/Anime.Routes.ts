@@ -16,12 +16,12 @@ const deleteAnimeRentControllers = new DeleteAnimeRentControllers();
 
 const anime = Router();
 
-anime.post("/anime", createAnimeControllers.handle);
-anime.get("/anime", findAllAnimeControllers.handle);
-anime.patch("/anime/:id", updateAnimeControllers.handle);
-anime.delete("/anime/:id", deleteAnimeControllers.handle);
+anime.post("/", createAnimeControllers.handle);
+anime.get("/", findAllAnimeControllers.handle);
+anime.patch("/:id", updateAnimeControllers.handle);
+anime.delete("/:id", deleteAnimeControllers.handle);
 
-anime.post("/anime/rent", createAnimeRentControllers.handle);
-anime.delete("/anime/rent/:animeId/:userId", deleteAnimeRentControllers.handle);
+anime.post("/rent", createAnimeRentControllers.handle);
+anime.delete("/rent/:animeId/:userId", deleteAnimeRentControllers.handle);
 
 export { anime };

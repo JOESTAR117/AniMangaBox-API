@@ -1,24 +1,12 @@
 import { Request, Response } from "express";
-import { database } from "../../../database/database";
+import { FindAllUserUseCase } from "./FindAllUserUseCase";
 
 export class FindAllUsersControllers {
   async handle(req: Request, res: Response) {
-    const usersExits = await database.user.findMany();
+    const findAllUserUseCase = new FindAllUserUseCase();
 
-    if (!usersExits) {
-      return res.status(400).json({ message: "No users found" });
-    }
+    const result = await findAllUserUseCase.execute();
 
-    const users = await database.user.findMany({
-      include: {
-        AnimeRent: {
-          select: {
-            animeId: true,
-          },
-        },
-      },
-    });
-
-    return res.status(200).json(users);
+    return res.status(200).json(result);
   }
 }

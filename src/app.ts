@@ -5,6 +5,7 @@ import cors from "cors";
 import { swagger } from "./routes/swagger.Routes";
 import { anime } from "./routes/Anime.Routes";
 import { user } from "./routes/User.Routes";
+import { AppError } from "./errors/AppError";
 
 const app = express();
 
@@ -15,9 +16,15 @@ app.use(anime);
 app.use(swagger);
 
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
-  return res.status(400).json({
-    status: "Error",
-    message: error.message,
+  if (error instanceof AppError) {
+    return res.status(error.statusCode).json({
+      status: "error",
+      message: error.message,
+    });
+  }
+  return res.status(500).json({
+    status: "error",
+    message: `Internal server error - ${error.message}`,
   });
 });
 

@@ -1,5 +1,6 @@
 import { hash } from "bcrypt";
 import { database } from "../../../database/database";
+import { AppError } from "../../../errors/AppError";
 import { UserDTO } from "../UserDto";
 
 export class CreateUserUseCase {
@@ -12,7 +13,7 @@ export class CreateUserUseCase {
       });
 
       if (userExists) {
-        throw new Error("User already exists!");
+        return new AppError("User already exists!");
       }
 
       const hashPassword = await hash(password, 10);

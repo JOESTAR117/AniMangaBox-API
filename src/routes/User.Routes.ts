@@ -9,8 +9,8 @@ const updateUserController = new UpdateUserController();
 
 const user = Router();
 
-user.post("/user", createUserController.handle);
-user.get("/user", findAllUsersController.handle);
-user.patch("/user/:id", updateUserController.handle);
+user.post("/", createUserController.handle);
+user.get("/", findAllUsersController.handle);
+user.patch("/:id", updateUserController.handle);
 
 export { user };

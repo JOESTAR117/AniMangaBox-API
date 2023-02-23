@@ -1,18 +1,16 @@
 import { database } from "../../../database/database";
 
-export class FindAllUserUseCase {
+export class FindAllAnimeUseCase {
   async execute() {
     try {
-      const users = await database.user.findMany({
-        select: {
-          id: true,
-          name: true,
-          email: true,
+      const animes = await database.anime.findMany({
+        include: {
           AnimeRent: {
             select: {
-              anime: {
+              user: {
                 select: {
-                  title: true,
+                  email:true,
+                  id: true,
                 },
               },
             },
@@ -20,9 +18,9 @@ export class FindAllUserUseCase {
         },
       });
 
-      return users;
+      return animes;
     } catch (error) {
-      return console.log(error);
+      console.log(error);
     }
   }
 }

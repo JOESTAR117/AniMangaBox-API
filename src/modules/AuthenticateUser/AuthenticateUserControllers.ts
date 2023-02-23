@@ -3,6 +3,7 @@ import { database } from "../../database/database";
 import { AuthenticateDTO } from "./AuthenticateDTO";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { GenerateRefreshToken } from "../../provider/GenerateRefreshToken";
 
 const Token: any = process.env.SECRET_JWT;
 
@@ -34,7 +35,11 @@ export class AuthenticateUserController {
         expiresIn: 86400,
       });
 
-      res.status(200).json(token);
+      const generateRefreshToken = new GenerateRefreshToken();
+
+      const refreshToken = await generateRefreshToken.execute(userIsValid.id);
+
+      res.json({ token, refreshToken });
     } catch (error) {
       console.log(error);
     }

@@ -4,6 +4,7 @@ import { AuthenticateDTO } from "./AuthenticateDTO";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { GenerateRefreshToken } from "../../provider/GenerateRefreshToken";
+import { GenerateTokenProvider } from "../../provider/GenerateTokenProvider";
 
 const Token: any = process.env.SECRET_JWT;
 
@@ -31,9 +32,9 @@ export class AuthenticateUserController {
         return res.status(400).json({ message: "User or Password incorrect" });
       }
 
-      const token = jwt.sign({ id: id }, Token, {
-        expiresIn: 86400,
-      });
+      const generatedTokenProvider = new GenerateTokenProvider();
+
+      const token = await generatedTokenProvider.execute(userIsValid.id);
 
       const generateRefreshToken = new GenerateRefreshToken();
 

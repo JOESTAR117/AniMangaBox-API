@@ -5,6 +5,6 @@ import swaggerDocument from '../swagger.json'
 const swagger = Router()
 
 swagger.use("/",swaggerUi.serve)
-swagger.get("/doc",swaggerUi.setup(swaggerDocument))
+swagger.get("/",swaggerUi.setup(swaggerDocument))
 
 export {swagger}

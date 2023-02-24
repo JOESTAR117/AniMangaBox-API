@@ -1,5 +1,5 @@
-import { AppError } from "../../../errors/AppError";
 import { database } from "../../../database/database";
+import { AppError } from "../../../errors/AppError";
 import { UserDTO } from "../UserDto";
 
 export class UpdateUserUseCase {
@@ -20,7 +20,7 @@ export class UpdateUserUseCase {
       data: {
         email: email,
         name: name,
-        password: hash,
+        password: password,
       },
     });
 

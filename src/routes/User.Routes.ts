@@ -16,10 +16,14 @@ const refreshTokenUserController = new RefreshTokenUserController();
 const user = Router();
 
 user.post("/", createUserController.handle);
-user.get("/", findAllUsersController.handle);
+user.get("/", Auth,findAllUsersController.handle);
 user.post("/login", authenticateUserController.handle);
 user.post("/refresh-token", refreshTokenUserController.handle);
 
+<<<<<<< Updated upstream
 user.patch("/:id", Auth, updateUserController.handle);
+=======
+user.patch("/:id", updateUserController.handle);
+>>>>>>> Stashed changes
 
 export { user };

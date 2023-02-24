@@ -20,12 +20,10 @@ const passwordRecoveryController = new PasswordRecovery();
 const user = Router();
 
 user.post("/", createUserController.handle);
-user.get("/", findAllUsersController.handle);
+user.get("/", Auth, findAllUsersController.handle);
 user.post("/login", authenticateUserController.handle);
 user.post("/refresh-token", refreshTokenUserController.handle);
 
-user.post("/recovery", passwordRecoveryController.handle);
-
-user.patch("/:id", validId, validUser, updateUserController.handle);
+user.patch("/:id", Auth, updateUserController.handle);
 
 export { user };

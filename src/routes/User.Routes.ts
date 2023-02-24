@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { Auth } from "../middlewares/Auth";
+import { validId, validUser } from "../middlewares/Global";
 import { AuthenticateUserController } from "../modules/AuthenticateUser/AuthenticateUserControllers";
 import { CreateUserController } from "../modules/User/CreateUser/CreateUserControllers";
 import { FindAllUsersControllers } from "../modules/User/findAllUser/FindAllUserControollers";
@@ -16,14 +17,10 @@ const refreshTokenUserController = new RefreshTokenUserController();
 const user = Router();
 
 user.post("/", createUserController.handle);
-user.get("/", Auth,findAllUsersController.handle);
+user.get("/", Auth, findAllUsersController.handle);
 user.post("/login", authenticateUserController.handle);
 user.post("/refresh-token", refreshTokenUserController.handle);
 
-<<<<<<< Updated upstream
-user.patch("/:id", Auth, updateUserController.handle);
-=======
-user.patch("/:id", updateUserController.handle);
->>>>>>> Stashed changes
+user.patch("/:id", validId, validUser, updateUserController.handle);
 
 export { user };

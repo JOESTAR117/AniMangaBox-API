@@ -22,6 +22,14 @@ model User {
   @@map("users")
 }
 
+model Admin {
+  id       String @id @default(uuid())
+  email    String
+  password String
+
+  @@map("admin")
+}
+
 model Anime {
   id           String      @id @default(uuid())
   title        String

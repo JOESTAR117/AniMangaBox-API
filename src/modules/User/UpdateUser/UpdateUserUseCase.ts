@@ -1,6 +1,7 @@
 import { database } from "../../../database/database";
 import { AppError } from "../../../errors/AppError";
 import { UserDTO } from "../UserDto";
+import bcrypt from "bcrypt";
 
 export class UpdateUserUseCase {
   async execute({ id, email, name, password }: UserDTO) {
@@ -13,6 +14,7 @@ export class UpdateUserUseCase {
       return new AppError("id is not valid");
     }
 
+    const Hash = await bcrypt.hash(password, 8);
     const user = await database.user.update({
       where: {
         id: id,
@@ -20,7 +22,7 @@ export class UpdateUserUseCase {
       data: {
         email: email,
         name: name,
-        password: password,
+        password: Hash,
       },
     });
 

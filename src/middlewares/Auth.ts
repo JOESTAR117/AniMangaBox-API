@@ -1,9 +1,13 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
+import dotenv from 'dotenv'
 
-const Token: any = process.env.SECRET_JWT;
+dotenv.config()
 
-export function Auth(req: Request, res: Response, next: NextFunction) {
+
+const Token:string = (process.env.SECRET_JWT as string)
+
+export const Auth = async (req: Request, res: Response, next: NextFunction) => {
   const authToken = req.headers.authorization;
 
   if (!authToken) {
@@ -17,8 +21,8 @@ export function Auth(req: Request, res: Response, next: NextFunction) {
   try {
     jwt.verify(token, Token);
 
-    return next();
+    next();
   } catch (error) {
-    return res.status(401).json({ message: "Token invalid" });
+    return console.log(Token)
   }
-}
+};

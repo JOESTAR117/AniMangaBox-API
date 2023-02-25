@@ -17,14 +17,11 @@ const refreshTokenUserController = new RefreshTokenUserController();
 const user = Router();
 
 user.post("/", createUserController.handle);
-user.get("/", Auth, findAllUsersController.handle);
+user.get("/", Auth ,findAllUsersController.handle);
+user.patch("/:id",validUser,validId,updateUserController.handle)
 user.post("/login", authenticateUserController.handle);
 user.post("/refresh-token", refreshTokenUserController.handle);
 
-<<<<<<< HEAD
-user.patch("/:id", Auth, updateUserController.handle);
-=======
-user.patch("/:id", validId, validUser, updateUserController.handle);
->>>>>>> parent of 3362ddf (feat: Password Recovery created✔)
+
 
 export { user };

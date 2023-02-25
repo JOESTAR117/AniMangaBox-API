@@ -6,8 +6,8 @@ export class FindAllUserUseCase {
       const users = await database.user.findMany({
         select: {
           id: true,
-          name: true,
           email: true,
+          name: true,
           AnimeRent: {
             select: {
               anime: {

@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
 
 dotenv.config();
 
@@ -18,11 +19,9 @@ export const adminMiddlewares = async (
 
   const [, token] = authToken.split(" ");
   try {
-    if (token === UserAdmin) {
-      next();
-    } else {
-      res.status(400).json({ message: "You are not the administrator" });
-    }
+    jwt.verify(token, UserAdmin);
+
+    next();
   } catch (error) {
     return res.status(400).json({ message: "You are not the administrator" });
   }

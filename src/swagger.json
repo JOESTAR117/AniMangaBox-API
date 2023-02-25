@@ -30,16 +30,17 @@
                                 "Users": {
                                     "value": {
                                         "name": "Name",
-                                        "email": "name@gmail.com"
+                                        "email": "name@gmail.com",
+                                        "password": "12345"
                                     }
                                 }
                             }
                         }
                     }
                 },
-                "response": {
+                "responses": {
                     "400": {
-                        "description": "Not Found"
+                        "description": "User already exists!"
                     },
                     "201": {
                         "description": "Created"
@@ -53,6 +54,11 @@
                 "description": "Route responsible for fetching all users",
                 "tags": [
                     "Users"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -72,9 +78,14 @@
         "/user/{id}": {
             "patch": {
                 "summary": "Update user by id",
-                "description": "Route responsible for editing the user by id",
+                "description": "Route responsible for editing the user by id,password is required",
                 "tags": [
                     "Users"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
                 ],
                 "parameters": [
                     {
@@ -92,17 +103,17 @@
                             "examples": {
                                 "Users": {
                                     "value": {
-                                        "name": "Name",
-                                        "email": "name@gmail.com"
+                                        "name": "Name 2",
+                                        "password":"12345"
                                     }
                                 }
                             }
                         }
                     }
                 },
-                "response": {
+                "responses": {
                     "400": {
-                        "description": "Not Found"
+                        "description": "Invalid ID"
                     },
                     "200": {
                         "description": "OK",
@@ -117,25 +128,65 @@
                 }
             }
         },
-        "/user/{id}/": {
-            "delete": {
-                "summary": "Delete a User",
-                "description": "Route responsible for deleting a User",
+        "/user/login": {
+            "post": {
+                "summary": "entering the account",
+                "description": "Route responsible for logging in a registered user",
                 "tags": [
-                    "Users"
+                    "Auth"
                 ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "type": "string",
-                        "description": "User ID",
-                        "required": true
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "examples": {
+                                "User": {
+                                    "value": {
+                                        "email": "name@gmail.com",
+                                        "password": "12345"
+                                    }
+                                }
+                            }
+                        }
                     }
-                ],
+                },
                 "responses": {
+                    "400": {
+                        "description": "User or Password incorrect"
+                    },
                     "200": {
                         "description": "OK"
+                    }
+                }
+            }
+        },
+        "/user/refresh-token": {
+            "post": {
+                "summary": "Refresh Token",
+                "description": "route responsible for refresh token,put the Token ID",
+                "tags": [
+                    "Auth"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "examples": {
+                                "Auth": {
+                                    "value": {
+                                        "refresh_token": ""
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Token id does not exist"
+                    },
+                    "200": {
+                        "description": "Ok"
                     }
                 }
             }
@@ -227,48 +278,26 @@
                                         "description": "After his city is destroyed and his mother is killed, a young man vows to cleanse the earth of the humanoids who have driven humanity to the brink of extinction.",
                                         "episodes": "97",
                                         "release_date": "2013-04-07T16:53:52.899Z"
-                                    },
-                                    "responses": {
-                                        "400": {
-                                            "description": "Not Found"
-                                        },
-                                        "200": {
-                                            "description": "OK",
-                                            "content": {
-                                                "application/json": {
-                                                    "schema": {
-                                                        "type": "object"
-                                                    }
-                                                }
-                                            }
-                                        }
                                     }
+                                    
                                 }
                             }
                         }
                     }
-                }
-            }
-        },
-        "/anime/{id}/": {
-            "delete": {
-                "summary": "Delete a Anime",
-                "description": "Route responsible for deleting a Anime",
-                "tags": [
-                    "Animes"
-                ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "type": "string",
-                        "description": "Anime ID",
-                        "required": true
-                    }
-                ],
+                },
                 "responses": {
+                    "400": {
+                        "description": "Not Found"
+                    },
                     "200": {
-                        "description": "OK"
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -280,6 +309,11 @@
                 "tags": [
                     "Animes_Rent"
                 ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -287,15 +321,18 @@
                             "examples": {
                                 "Anime_Rent": {
                                     "value": {
-                                        "animeId": "45b59a8b-a310-4381-b678-3d0721f59a33",
-                                        "userId": "54f4e428-90b0-4262-a59a-9acf569245e5"
-                                    },
-                                    "responses": {
-                                        "200": "you rented the anime"
+                                        "animeId": "b42ae709-4790-4579-b384-29694564ff84",
+                                        "userId": "a30b8775-dad7-4fcf-ad7a-2c86224caeff"
                                     }
+                                    
                                 }
                             }
                         }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description":"you rented the anime"
                     }
                 }
             }
@@ -306,6 +343,11 @@
                 "description": "Route responsible for ends the anime rental",
                 "tags": [
                     "Animes_Rent"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
                 ],
                 "parameters": [
                     {
@@ -331,6 +373,15 @@
                         "description": "this anime has not been rented"
                     }
                 }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
             }
         }
     }

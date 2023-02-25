@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Auth } from "../middlewares/Auth";
+import { Auth } from "../middlewares/Auth.Middlewares";
 import { CreateAnimeControllers } from "../modules/Anime/CreateAnime/CreateAnimeControllers";
 import { FindAllAnimeController } from "../modules/Anime/FindAllAnime/FindAllAnimeControllers";
 import { UpdateAnimeControllers } from "../modules/Anime/updateAnime/UpdateAnimeControllers";

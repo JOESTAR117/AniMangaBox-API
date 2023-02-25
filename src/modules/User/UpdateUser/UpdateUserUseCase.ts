@@ -26,6 +26,10 @@ export class UpdateUserUseCase {
       },
     });
 
+    if (!user.password && !user.email && !user.name) {
+      return new AppError("pass some data to update");
+    }
+
     return user;
   }
 }

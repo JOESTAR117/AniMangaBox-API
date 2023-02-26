@@ -1,5 +1,7 @@
 import { Router } from "express";
+import { adminMiddlewares } from "../middlewares/Admin.Middlewares";
 import { Auth } from "../middlewares/Auth.Middlewares";
+import { validAnimeId } from "../middlewares/Global.Middlewares";
 import { CreateAnimeControllers } from "../modules/Anime/CreateAnime/CreateAnimeControllers";
 import { FindAllAnimeController } from "../modules/Anime/FindAllAnime/FindAllAnimeControllers";
 import { UpdateAnimeControllers } from "../modules/Anime/updateAnime/UpdateAnimeControllers";
@@ -17,9 +19,9 @@ const anime = Router();
 
 anime.post("/", createAnimeControllers.handle);
 anime.get("/", findAllAnimeControllers.handle);
-anime.patch("/:id", updateAnimeControllers.handle);
+anime.patch("/:id", adminMiddlewares,validAnimeId,updateAnimeControllers.handle);
 
 anime.post("/rent", Auth,createAnimeRentControllers.handle);
-anime.delete("/rent/:animeId/:userId",Auth, deleteAnimeRentControllers.handle);
+anime.delete("/rent/delete",Auth,deleteAnimeRentControllers.handle);
 
 export { anime };

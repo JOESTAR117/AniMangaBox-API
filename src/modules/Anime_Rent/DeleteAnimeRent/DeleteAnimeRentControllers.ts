@@ -3,7 +3,7 @@ import { DeleteAnimeRentUseCase } from "./DeleteAnimeRentUseCase";
 
 export class DeleteAnimeRentControllers {
   async handle(req: Request, res: Response) {
-    const { animeId, userId } = req.params;
+    const { animeId, userId } = req.body;
     try {
       const deleteAnimeRentUseCase = new DeleteAnimeRentUseCase();
 

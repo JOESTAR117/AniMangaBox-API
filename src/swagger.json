@@ -337,7 +337,7 @@
                 }
             }
         },
-        "/anime/rent/{animeId}/{userId}": {
+        "/anime/rent/delete": {
             "delete": {
                 "summary": "ends the anime rental",
                 "description": "Route responsible for ends the anime rental",
@@ -349,22 +349,22 @@
                         "bearerAuth": []
                     }
                 ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "animeId",
-                        "type": "string",
-                        "description": "Anime ID",
-                        "required": true
-                    },
-                    {
-                        "in": "path",
-                        "name": "userId",
-                        "type": "string",
-                        "description": "user ID",
-                        "required": true
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "examples": {
+                                "Anime_Rent": {
+                                    "value": {
+                                        "animeId": "b42ae709-4790-4579-b384-29694564ff84",
+                                        "userId": "a30b8775-dad7-4fcf-ad7a-2c86224caeff"
+                                    }
+                                    
+                                }
+                            }
+                        }
                     }
-                ],
+                },
                 "responses": {
                     "200": {
                         "description": "You ended your subscription with the anime "

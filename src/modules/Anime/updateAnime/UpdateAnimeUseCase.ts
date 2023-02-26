@@ -5,15 +5,6 @@ import { AnimeDTO } from "../AnimeDTO";
 export class UpdateAnimeUseCase {
   async execute({ id, description, episodes, title, release_date }: AnimeDTO) {
     try {
-      const animeExists = await database.anime.findUnique({
-        where: {
-          id: id,
-        },
-      });
-
-      if (!animeExists) {
-        return new AppError("No anime matches the id that was passed");
-      }
       const anime = await database.anime.update({
         where: {
           id: id,

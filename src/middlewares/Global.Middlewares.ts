@@ -16,7 +16,7 @@ export const validId = async (
         },
       }))
     ) {
-      return res.status(400).send({ message: "Invalid ID" });
+      return res.status(400).json({ message: "Invalid ID" });
     }
     next();
   } catch (error) {
@@ -38,7 +38,30 @@ export const validUser = async (
     });
 
     if (!user) {
-      return res.status(400).send({ message: "User not found" });
+      return res.status(400).json({ message: "User not found" });
+    }
+
+    next();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const validAnimeId = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const id = req.params.id;
+    const anime = await database.anime.findUnique({
+      where: {
+        id: id,
+      },
+    });
+
+    if (!anime) {
+      return res.status(400).json({ message: "Anime not found" });
     }
 
     next();

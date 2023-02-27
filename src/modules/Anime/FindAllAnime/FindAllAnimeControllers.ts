@@ -3,7 +3,6 @@ import { FindAllAnimeUseCase } from "./FindAllAnimeUseCase";
 
 export class FindAllAnimeController {
   async handle(req: Request, res: Response) {
-    const { search } = req.query;
     try {
       const findAllAnimeUseCase = new FindAllAnimeUseCase();
 

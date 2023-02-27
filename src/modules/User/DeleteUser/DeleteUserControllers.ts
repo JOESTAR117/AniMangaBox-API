@@ -11,6 +11,6 @@ export class DeleteUserController {
       id: id,
     });
 
-    return res.status(204).json(result);
+    return res.status(200).json(result);
   }
 }

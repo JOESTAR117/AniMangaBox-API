@@ -1,5 +1,5 @@
 # alugueis-animes-api
-API para criações de animes e usuarios, e com o sistema de alugar animes para assistir, com diversas informações da obra
+API para criações de animes e usuarios, e com o sistema de alugar animes e mangas com diversas informações da obra
 
 
 

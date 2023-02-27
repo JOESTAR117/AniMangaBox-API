@@ -3,10 +3,10 @@ import { adminMiddlewares } from "../middlewares/Admin.Middlewares";
 import { validId, validUser } from "../middlewares/Global.Middlewares";
 import { AuthenticateUserController } from "../modules/AuthenticateUser/AuthenticateUserControllers";
 import { CreateUserController } from "../modules/User/CreateUser/CreateUserControllers";
-import { DeleteUserController } from "../modules/User/DeleteUser/DeleteUserController";
-import { FindAllUsersControllers } from "../modules/User/findAllUser/FindAllUserController";
-import { RefreshTokenUserController } from "../modules/User/RefreshTokenUser/RefreshTokenUserController";
-import { UpdateUserController } from "../modules/User/UpdateUser/UpdateUserController";
+import { DeleteUserController } from "../modules/User/DeleteUser/DeleteUserControllers";
+import { FindAllUsersControllers } from "../modules/User/findAllUser/FindAllUserControllers";
+import { RefreshTokenUserController } from "../modules/User/RefreshTokenUser/RefreshTokenUserControllers";
+import { UpdateUserController } from "../modules/User/UpdateUser/UpdateUserControllers";
 
 const createUserController = new CreateUserController();
 const findAllUsersController = new FindAllUsersControllers();

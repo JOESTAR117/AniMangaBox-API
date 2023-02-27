@@ -1,4 +1,4 @@
-import { FindAllUsersControllers } from "./FindAllUserController";
+import { FindAllUsersControllers } from "./FindAllUserControllers";
 import { makeMockResponse } from "../../../../utils/mocks/makeMockResponse";
 
 const findAllUser = new FindAllUsersControllers();

@@ -21,4 +21,16 @@ describe("CreateUserController", () => {
 
     expect(res.state.status).toEqual(201);
   });
+
+  it("Should return the status 400 of the created anime failed", async () => {
+    const req = {
+      body: {
+        title: "teste",
+      },
+    } as Request;
+
+    await createAnime.handle(req, res);
+
+    expect(res.state.status).toEqual(400);
+  });
 });

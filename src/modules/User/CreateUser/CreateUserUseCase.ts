@@ -25,6 +25,10 @@ export class CreateUserUseCase {
           password: hashPassword,
         },
       });
+    if(user.email.length < 1 || user.name.length < 1 || user.password.length < 1){
+      return new AppError("fill in all fields to create the account");
+    }
+
       return user;
     } catch (error) {
       return console.log(error);

@@ -1,8 +1,8 @@
 import { database } from "../../../database/database";
 import { AppError } from "../../../errors/AppError";
-import { GenerateTokenProvider } from "../../../provider/GenerateTokenProvider";
+import { GenerateTokenProvider } from "../../../provider/RefreshToken/GenerateTokenProvider";
 import dayjs from "dayjs";
-import { GenerateRefreshToken } from "../../../provider/GenerateRefreshToken";
+import { GenerateRefreshToken } from "../../../provider/RefreshToken/GenerateRefreshToken";
 
 export class RefreshTokenUserUseCase {
   async execute(refresh_token: string) {

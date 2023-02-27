@@ -1,8 +1,8 @@
-import { Response } from "express";
+import { Request, Response } from "express";
 import { FindAllUserUseCase } from "./FindAllUserUseCase";
 
 export class FindAllUsersControllers {
-  async handle(res: Response) {
+  async handle(req:Request,res: Response) {
     const findAllUserUseCase = new FindAllUserUseCase();
 
     const result = await findAllUserUseCase.execute();

@@ -23,6 +23,13 @@ export class CreateAnimeUseCase {
           release_date: release_date,
         },
       });
+      if (
+        anime.title.length < 1 ||
+        anime.description.length < 1 ||
+        anime.episodes.length < 1
+      ) {
+        return new AppError("fill in all fields to create the account");
+      }
 
       return anime;
     } catch (error) {

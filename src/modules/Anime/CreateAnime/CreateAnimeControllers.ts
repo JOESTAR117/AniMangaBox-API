@@ -14,6 +14,12 @@ export class CreateAnimeControllers {
         release_date,
       });
 
+      if (!title || !description || !episodes || !release_date) {
+        return res
+          .status(400)
+          .json({ message: "fill in all fields to create the anime" });
+      }
+
       return res.status(201).json({ result });
     } catch (error) {
       console.error(error);

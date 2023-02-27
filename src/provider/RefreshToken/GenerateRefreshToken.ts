@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 
-import { database } from "../database/database";
+import { database } from "../../database/database";
 
 
 export class GenerateRefreshToken {

@@ -3,8 +3,8 @@ import { database } from "../../database/database";
 import { AuthenticateDTO } from "./AuthenticateDTO";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { GenerateRefreshToken } from "../../provider/GenerateRefreshToken";
-import { GenerateTokenProvider } from "../../provider/GenerateTokenProvider";
+import { GenerateRefreshToken } from "../../provider/RefreshToken/GenerateRefreshToken";
+import { GenerateTokenProvider } from "../../provider/RefreshToken/GenerateTokenProvider";
 
 const Token: any = process.env.SECRET_JWT;
 

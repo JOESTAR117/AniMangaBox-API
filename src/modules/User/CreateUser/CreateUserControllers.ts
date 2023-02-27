@@ -13,6 +13,10 @@ export class CreateUserController {
       password,
     });
 
+    if (!name || !email || !password) {
+      return res.status(400).json("fill in all fields to create the account");
+    }
+
     return res.status(201).json(result);
   }
 }

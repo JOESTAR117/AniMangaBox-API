@@ -28,7 +28,7 @@ export class CreateAnimeUseCase {
         anime.description.length < 1 ||
         anime.episodes.length < 1
       ) {
-        return new AppError("fill in all fields to create the account");
+        return new AppError("fill in all fields to create the anime");
       }
 
       return anime;

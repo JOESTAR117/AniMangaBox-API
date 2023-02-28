@@ -1,6 +1,6 @@
 import { Request } from "express";
-import { makeMockResponse } from "../../../../utils/mocks/makeMockResponse";
-import { UpdateUserController } from "./UpdateUserControllers";
+import { makeMockResponse } from "../../../utils/mocks/makeMockResponse";
+import { UpdateUserController } from "../../../src/modules/User/UpdateUser/UpdateUserControllers";
 
 const updateUser = new UpdateUserController();
 

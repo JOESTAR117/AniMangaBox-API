@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { database } from "../../database/database";
-import { AuthenticateDTO } from "./AuthenticateDTO";
+import { AuthenticateDTO } from "../../dtos/Authenticate/AuthenticateDTO";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { GenerateRefreshToken } from "../../provider/RefreshToken/GenerateRefreshToken";

@@ -1,4 +1,4 @@
-import { AdminDTO } from "../AdminDTO";
+import { AdminDTO } from "../../../dtos/Admin/AdminDTO";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";

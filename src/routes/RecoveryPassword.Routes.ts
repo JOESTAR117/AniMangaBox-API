@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { PasswordRecovery } from "../modules/User/PasswordRecovery/PasswordRecoveryControllers";
+import { PasswordRecovery } from "../modules/PasswordRecovery/PasswordRecoveryControllers";
 
 const recovery = Router()
 

@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 
-import { database } from "../../../database/database";
-import { UserDTO } from "../UserDto";
+import { database } from "../../database/database";
+import { UserDTO } from "../../dtos/User/UserDto";
 import * as crypto from "crypto";
 import bcrypt from "bcrypt";
-import { transporter } from "../../../config/Nodemailer";
+import { transporter } from "../../config/Nodemailer";
 
 export class PasswordRecovery {
   async handle(req: Request, res: Response) {

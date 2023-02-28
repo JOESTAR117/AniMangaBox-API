@@ -1,5 +1,5 @@
 import { database } from "../../../database/database";
-import { DeleteAnimeDTO } from "./DeleteAnimeDTO";
+import { DeleteAnimeDTO } from "../../../dtos/Anime/DeleteAnimeDTO";
 
 export class DeleteAnimeUseCase {
   async execute({ id }: DeleteAnimeDTO) {

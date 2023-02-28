@@ -1,6 +1,6 @@
 import { Request } from "express";
-import { makeMockResponse } from "../../../../utils/mocks/makeMockResponse";
-import { CreateMangaControllers } from "./CreateMangaControllers";
+import { makeMockResponse } from "../../../utils/mocks/makeMockResponse";
+import { CreateMangaControllers } from "../../../src/modules/Manga/CreateManga/CreateMangaControllers";
 
 const createManga = new CreateMangaControllers();
 

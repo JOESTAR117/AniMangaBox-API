@@ -1,6 +1,6 @@
 import { database } from "../../../database/database";
 import { AppError } from "../../../errors/AppError";
-import { AnimeDTO } from "../AnimeDTO";
+import { AnimeDTO } from "../../../dtos/Anime/AnimeDTO";
 
 export class UpdateAnimeUseCase {
   async execute({ id, description, episodes, title, release_date }: AnimeDTO) {

@@ -1,7 +1,7 @@
 import { hash } from "bcrypt";
 import { database } from "../../../database/database";
 import { AppError } from "../../../errors/AppError";
-import { UserDTO } from "../UserDto";
+import { UserDTO } from "../../../dtos/User/UserDto";
 
 export class CreateUserUseCase {
   async execute({ name, email, password }: UserDTO) {

@@ -1,6 +1,6 @@
 import { database } from "../../../database/database";
 import { AppError } from "../../../errors/AppError";
-import { MangaDTO } from "../MangaDTO";
+import { MangaDTO } from "../../../dtos/Manga/MangaDTO";
 
 export class CreateMangaUseCase {
   async execute({

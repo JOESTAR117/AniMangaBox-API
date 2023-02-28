@@ -1,6 +1,6 @@
 import { database } from "../../../database/database";
 import { AppError } from "../../../errors/AppError";
-import { AnimeRentDTO } from "../AnimeRentDTO";
+import { AnimeRentDTO } from "../../../dtos/Anime/AnimeRentDTO";
 
 export class DeleteAnimeRentUseCase {
   async execute({ animeId, userId }: AnimeRentDTO) {

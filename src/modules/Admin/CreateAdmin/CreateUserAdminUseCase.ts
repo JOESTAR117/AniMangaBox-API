@@ -1,5 +1,5 @@
 import { database } from "../../../database/database";
-import { AdminDTO } from "../AdminDTO";
+import { AdminDTO } from "../../../dtos/Admin/AdminDTO";
 import bcrypt from "bcrypt";
 
 export class CreateUserAdminUseCase {

@@ -1,6 +1,6 @@
 import { database } from "../../../database/database";
 import { AppError } from "../../../errors/AppError";
-import { DeleteUserDTO } from "./DeleteUserDTO";
+import { DeleteUserDTO } from "../../../dtos/User/DeleteUserDTO";
 
 export class DeleteUserUseCase {
   async execute({ id }: DeleteUserDTO) {

@@ -1,6 +1,6 @@
 import { Request } from "express";
-import { makeMockResponse } from "../../../../utils/mocks/makeMockResponse";
-import { CreateUserController } from "./CreateUserControllers";
+import { makeMockResponse } from "../../../utils/mocks/makeMockResponse";
+import { CreateUserController } from "../../../src/modules/User/CreateUser/CreateUserControllers";
 
 const createUser = new CreateUserController();
 

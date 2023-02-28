@@ -1,6 +1,6 @@
 import { Request } from "express";
-import { makeMockResponse } from "../../../../utils/mocks/makeMockResponse";
-import { CreateAnimeControllers } from "./CreateAnimeControllers";
+import { makeMockResponse } from "../../../utils/mocks/makeMockResponse";
+import { CreateAnimeControllers } from "../../../src/modules/Anime/CreateAnime/CreateAnimeControllers";
 
 const createAnime = new CreateAnimeControllers();
 

@@ -5,7 +5,7 @@ import { AuthenticateUserController } from "../modules/AuthenticateUser/Authenti
 import { CreateUserController } from "../modules/User/CreateUser/CreateUserControllers";
 import { DeleteUserController } from "../modules/User/DeleteUser/DeleteUserControllers";
 import { FindAllUsersControllers } from "../modules/User/findAllUser/FindAllUserControllers";
-import { RefreshTokenUserController } from "../modules/User/RefreshTokenUser/RefreshTokenUserControllers";
+import { RefreshTokenUserController } from "../modules/RefreshTokenUser/RefreshTokenUserControllers";
 import { UpdateUserController } from "../modules/User/UpdateUser/UpdateUserControllers";
 
 const createUserController = new CreateUserController();

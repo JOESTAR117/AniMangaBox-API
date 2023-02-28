@@ -1,10 +1,13 @@
 import { Router } from "express";
 import { CreateMangaControllers } from "../modules/Manga/CreateManga/CreateMangaControllers";
+import { FindAllMangaControllers } from "../modules/Manga/FindAllManga/FindAllMangaControllers";
 
-const manga = Router()
+const manga = Router();
 
-const createMangaControllers = new CreateMangaControllers()
+const createMangaControllers = new CreateMangaControllers();
+const findAllMangaControllers = new FindAllMangaControllers();
 
-manga.post("/",createMangaControllers.handle)
+manga.post("/", createMangaControllers.handle);
+manga.get("/", findAllMangaControllers.handle);
 
-export {manga}
+export { manga };

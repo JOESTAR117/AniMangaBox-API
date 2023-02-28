@@ -1,19 +1,9 @@
 import { database } from "../../../database/database";
-import { request, Request } from "express";
 
 export class FindAllAnimeUseCase {
-  async execute(req: Request) {
-    const { search, take, skip } = req.query;
+  async execute() {
     try {
       const animes = await database.anime.findMany({
-        where: {
-          title: {
-            contains: String(search),
-            mode: "insensitive",
-          },
-        },
-        take: Number(take),
-        skip: Number(skip),
         select: {
           id: true,
           title: true,

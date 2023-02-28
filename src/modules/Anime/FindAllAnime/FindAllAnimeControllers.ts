@@ -6,7 +6,7 @@ export class FindAllAnimeController {
     try {
       const findAllAnimeUseCase = new FindAllAnimeUseCase();
 
-      const result = await findAllAnimeUseCase.execute(req);
+      const result = await findAllAnimeUseCase.execute();
 
       return res.status(200).json(result);
     } catch (error) {

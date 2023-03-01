@@ -1,14 +1,14 @@
-import { Request } from "express";
-import { Params } from "express-serve-static-core";
+import { Request } from 'express'
+import { Params } from 'express-serve-static-core'
 
 interface mockRequest {
-  params?: Params;
+	params?: Params
 }
 
 export function makeMockRequest({ params }: mockRequest) {
-  const request = {
-    params: params || {},
-  } as unknown;
+	const request = {
+		params: params || {},
+	} as unknown
 
-  return request as Request;
+	return request as Request
 }

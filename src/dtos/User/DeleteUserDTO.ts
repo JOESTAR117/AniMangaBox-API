@@ -1,3 +1,3 @@
 export interface DeleteUserDTO {
-  id: string;
+	id: string
 }

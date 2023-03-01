@@ -1,3 +1,3 @@
-export interface DeleteAnimeDTO{
-    id:string
+export interface DeleteAnimeDTO {
+	id: string
 }

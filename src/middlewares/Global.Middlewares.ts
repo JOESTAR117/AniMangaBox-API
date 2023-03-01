@@ -70,4 +70,27 @@ export const validAnimeId = async (
 	}
 }
 
+export const validMangaId = async (
+	req: Request,
+	res: Response,
+	next: NextFunction
+) => {
+	try {
+		const id = req.params.id
+		const manga = await database.manga.findUnique({
+			where: {
+				id: id,
+			},
+		})
+
+		if (!manga) {
+			return res.status(400).json({ message: 'Manga not found' })
+		}
+
+		next()
+	} catch (error) {
+		console.log(error)
+	}
+}
+
 export default { validId, validUser }

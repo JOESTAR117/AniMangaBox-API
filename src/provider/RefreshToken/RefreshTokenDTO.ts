@@ -1,3 +1,3 @@
-export interface RefreshTokenDTO{
-    userId:string
+export interface RefreshTokenDTO {
+	userId: string
 }

@@ -1,4 +1,4 @@
-export interface AnimeRentDTO{
-    animeId:string
-    userId:string
+export interface AnimeRentDTO {
+	animeId: string
+	userId: string
 }

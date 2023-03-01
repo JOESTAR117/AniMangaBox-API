@@ -1,22 +1,24 @@
-import { Request, Response } from "express";
-import { CreateUserUseCase } from "./CreateUserUseCase";
+import { Request, Response } from 'express'
+import { CreateUserUseCase } from './CreateUserUseCase'
 
 export class CreateUserController {
-  async handle(req: Request, res: Response) {
-    const { name, email, password } = req.body;
+	async handle(req: Request, res: Response) {
+		const { name, email, password } = req.body
 
-    const createUserUseCase = new CreateUserUseCase();
+		const createUserUseCase = new CreateUserUseCase()
 
-    const result = await createUserUseCase.execute({
-      name,
-      email,
-      password,
-    });
+		const result = await createUserUseCase.execute({
+			name,
+			email,
+			password,
+		})
 
-    if (!name || !email || !password) {
-      return res.status(400).json("fill in all fields to create the account");
-    }
+		if (!name || !email || !password) {
+			return res
+				.status(400)
+				.json('fill in all fields to create the account')
+		}
 
-    return res.status(201).json(result);
-  }
+		return res.status(201).json(result)
+	}
 }

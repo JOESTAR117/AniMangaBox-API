@@ -1,42 +1,42 @@
-import { AdminDTO } from "../../../dtos/Admin/AdminDTO";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
-import { database } from "../../../database/database";
-import { AppError } from "../../../errors/AppError";
+import { AdminDTO } from '../../../dtos/Admin/AdminDTO'
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
+import { database } from '../../../database/database'
+import { AppError } from '../../../errors/AppError'
 
-dotenv.config();
+dotenv.config()
 
 export class LoginAdminUseCase {
-  async execute({ email, password, id }: AdminDTO) {
-    const UserAdmin: string = process.env.ADMIN as string;
+	async execute({ email, password, id }: AdminDTO) {
+		const UserAdmin: string = process.env.ADMIN as string
 
-    try {
-      const userIsValid = await database.admin.findFirst({
-        where: {
-          email: email,
-        },
-      });
+		try {
+			const userIsValid = await database.admin.findFirst({
+				where: {
+					email: email,
+				},
+			})
 
-      if (!userIsValid) {
-        return new AppError("User or Password incorrect");
-      }
+			if (!userIsValid) {
+				return new AppError('User or Password incorrect')
+			}
 
-      const passwordIsValid = await bcrypt.compare(
-        password,
-        userIsValid.password
-      );
+			const passwordIsValid = await bcrypt.compare(
+				password,
+				userIsValid.password
+			)
 
-      if (!passwordIsValid) {
-        return new AppError("User or Password incorrect");
-      }
-      const tokenAdmin = jwt.sign({ id: id }, UserAdmin, {
-        expiresIn: 86400,
-      });
+			if (!passwordIsValid) {
+				return new AppError('User or Password incorrect')
+			}
+			const tokenAdmin = jwt.sign({ id: id }, UserAdmin, {
+				expiresIn: 86400,
+			})
 
-      return tokenAdmin;
-    } catch (error) {
-      console.log(error);
-    }
-  }
+			return tokenAdmin
+		} catch (error) {
+			console.log(error)
+		}
+	}
 }

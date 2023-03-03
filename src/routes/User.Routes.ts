@@ -1,12 +1,15 @@
 import { Router } from 'express'
+
 import { adminMiddlewares } from '../middlewares/Admin.Middlewares'
 import { validId, validUser } from '../middlewares/Global.Middlewares'
-import { AuthenticateUserController } from '../modules/AuthenticateUser/AuthenticateUserControllers'
+
 import { CreateUserController } from '../modules/User/CreateUser/CreateUserControllers'
 import { DeleteUserController } from '../modules/User/DeleteUser/DeleteUserControllers'
 import { FindAllUsersControllers } from '../modules/User/findAllUser/FindAllUserControllers'
-import { RefreshTokenUserController } from '../modules/RefreshTokenUser/RefreshTokenUserControllers'
 import { UpdateUserController } from '../modules/User/UpdateUser/UpdateUserControllers'
+
+import { AuthenticateUserController } from '../modules/AuthenticateUser/AuthenticateUserControllers'
+import { RefreshTokenUserController } from '../modules/RefreshTokenUser/RefreshTokenUserControllers'
 
 const createUserController = new CreateUserController()
 const findAllUsersController = new FindAllUsersControllers()

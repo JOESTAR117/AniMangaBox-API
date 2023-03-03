@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import { DeleteMangaUseCase } from './DeleteMangaUseCase'
 
-export class DeleteMangaController {
+export class DeleteMangaControllers {
 	async handle(req: Request, res: Response) {
 		const { id } = req.params
 

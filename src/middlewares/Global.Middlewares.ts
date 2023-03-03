@@ -93,4 +93,4 @@ export const validMangaId = async (
 	}
 }
 
-export default { validId, validUser }
+export default { validId, validUser, validAnimeId, validMangaId }

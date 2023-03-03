@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
+    "start": "node dist/src/server.js",
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server",
     "vercel-build": "npx prisma migrate deploy",
     "swagger-autogen": "node dist/swagger/swagger.js",

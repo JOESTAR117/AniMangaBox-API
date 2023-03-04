@@ -1,8 +1,7 @@
-import { Request } from 'express'
 import { database } from '../../../database/database'
 
 export class FindAllUserUseCase {
-	async execute(req: Request) {
+	async execute() {
 		try {
 			const users = await database.user.findMany({
 				select: {

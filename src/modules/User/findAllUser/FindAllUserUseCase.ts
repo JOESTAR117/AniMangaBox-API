@@ -17,15 +17,6 @@ export class FindAllUserUseCase {
 							},
 						},
 					},
-					MangaRent: {
-						select: {
-							manga: {
-								select: {
-									title: true,
-								},
-							},
-						},
-					},
 				},
 			})
 

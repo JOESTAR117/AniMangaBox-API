@@ -2,15 +2,12 @@ import { Request, Response } from 'express'
 import { database } from '../../database/database'
 import { AuthenticateDTO } from '../../dtos/Authenticate/AuthenticateDTO'
 import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
 import { GenerateRefreshToken } from '../../provider/RefreshToken/GenerateRefreshToken'
 import { GenerateTokenProvider } from '../../provider/RefreshToken/GenerateTokenProvider'
 
-const Token: any = process.env.SECRET_JWT
-
 export class AuthenticateUserController {
 	async handle(req: Request, res: Response) {
-		const { email, password, id }: AuthenticateDTO = req.body
+		const { email, password }: AuthenticateDTO = req.body
 
 		try {
 			const userIsValid = await database.user.findUnique({

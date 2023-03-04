@@ -19,6 +19,7 @@ export class CreateAnimeRentUseCase {
 			const animeAlredyRented = await database.animeRent.findFirst({
 				where: {
 					animeId: this.data.animeId,
+					userId: this.data.userId,
 				},
 			})
 

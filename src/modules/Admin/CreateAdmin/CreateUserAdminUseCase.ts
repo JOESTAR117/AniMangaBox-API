@@ -3,11 +3,12 @@ import { AdminDTO } from '../../../dtos/Admin/AdminDTO'
 import bcrypt from 'bcrypt'
 
 export class CreateUserAdminUseCase {
-	async execute({ email, password }: AdminDTO) {
-		const hash = await bcrypt.hash(password, 8)
+	constructor(private data: AdminDTO) {}
+	async execute() {
+		const hash = await bcrypt.hash(this.data.password, 8)
 		const admin = await database.admin.create({
 			data: {
-				email: email,
+				email: this.data.email,
 				password: hash,
 			},
 		})

@@ -10,13 +10,13 @@ export class UpdateUserController {
 			return res.status(400).json({ message: 'pass some data to update' })
 		}
 
-		const updateUserUseCase = new UpdateUserUseCase()
-		const result = await updateUserUseCase.execute({
-			id,
+		const updateUserUseCase = new UpdateUserUseCase({
 			email,
 			name,
 			password,
+			id,
 		})
+		await updateUserUseCase.execute()
 
 		return res
 			.status(200)

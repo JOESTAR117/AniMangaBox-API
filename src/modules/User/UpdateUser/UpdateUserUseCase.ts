@@ -4,24 +4,25 @@ import { UserDTO } from '../../../dtos/User/UserDto'
 import bcrypt from 'bcrypt'
 
 export class UpdateUserUseCase {
-	async execute({ id, email, name, password }: UserDTO) {
+	constructor(private data: UserDTO) {}
+	async execute() {
 		const idIsValid = await database.user.findUnique({
 			where: {
-				id: id,
+				id: this.data.id,
 			},
 		})
 		if (!idIsValid) {
 			return new AppError('id is not valid')
 		}
 
-		const Hash = await bcrypt.hash(password, 8)
+		const Hash = await bcrypt.hash(this.data.password, 8)
 		const user = await database.user.update({
 			where: {
-				id: id,
+				id: this.data.id,
 			},
 			data: {
-				email: email,
-				name: name,
+				email: this.data.email,
+				name: this.data.name,
 				password: Hash,
 			},
 		})

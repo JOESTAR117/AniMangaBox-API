@@ -3,26 +3,26 @@ import { AppError } from '../../../errors/AppError'
 import { AnimeDTO } from '../../../dtos/Anime/AnimeDTO'
 
 export class UpdateAnimeUseCase {
-	async execute({
-		id,
-		description,
-		episodes,
-		title,
-		release_date,
-	}: AnimeDTO) {
+	constructor(private data: AnimeDTO) {}
+	async execute() {
 		try {
 			const anime = await database.anime.update({
 				where: {
-					id: id,
+					id: this.data.id,
 				},
 				data: {
-					title: title,
-					description: description,
-					episodes: episodes,
-					release_date: release_date,
+					title: this.data.title,
+					description: this.data.description,
+					episodes: this.data.episodes,
+					release_date: this.data.release_date,
 				},
 			})
-			if (!title && !description && !episodes && !release_date) {
+			if (
+				!this.data.title &&
+				!this.data.description &&
+				!this.data.episodes &&
+				!this.data.release_date
+			) {
 				return new AppError('fill in some field to update')
 			}
 

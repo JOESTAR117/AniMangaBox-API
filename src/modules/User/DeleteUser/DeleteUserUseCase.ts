@@ -3,10 +3,11 @@ import { AppError } from '../../../errors/AppError'
 import { DeleteUserDTO } from '../../../dtos/User/DeleteUserDTO'
 
 export class DeleteUserUseCase {
-	async execute({ id }: DeleteUserDTO) {
+	constructor(private data: DeleteUserDTO) {}
+	async execute() {
 		const userRentedAnime = await database.animeRent.findMany({
 			where: {
-				userId: id,
+				userId: this.data.id,
 			},
 		})
 
@@ -16,7 +17,7 @@ export class DeleteUserUseCase {
 
 		const user = await database.user.delete({
 			where: {
-				id: id,
+				id: this.data.id,
 			},
 		})
 

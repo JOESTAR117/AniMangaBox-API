@@ -8,13 +8,14 @@ import { AppError } from '../../../errors/AppError'
 dotenv.config()
 
 export class LoginAdminUseCase {
-	async execute({ email, password, id }: AdminDTO) {
+	constructor(private data: AdminDTO) {}
+	async execute() {
 		const UserAdmin: string = process.env.ADMIN as string
 
 		try {
 			const userIsValid = await database.admin.findFirst({
 				where: {
-					email: email,
+					email: this.data.email,
 				},
 			})
 
@@ -23,14 +24,14 @@ export class LoginAdminUseCase {
 			}
 
 			const passwordIsValid = await bcrypt.compare(
-				password,
+				this.data.password,
 				userIsValid.password
 			)
 
 			if (!passwordIsValid) {
 				return new AppError('User or Password incorrect')
 			}
-			const tokenAdmin = jwt.sign({ id: id }, UserAdmin, {
+			const tokenAdmin = jwt.sign({ id: this.data.id }, UserAdmin, {
 				expiresIn: 86400,
 			})
 

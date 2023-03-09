@@ -5,14 +5,14 @@ export class CreateAnimeControllers {
 	async handle(req: Request, res: Response) {
 		const { title, description, episodes, release_date } = req.body
 		try {
-			const createAnimeUseCase = new CreateAnimeUseCase()
-
-			const result = await createAnimeUseCase.execute({
+			const createAnimeUseCase = new CreateAnimeUseCase({
 				title,
 				description,
 				episodes,
 				release_date,
 			})
+
+			const result = await createAnimeUseCase.execute()
 
 			if (!title || !description || !episodes || !release_date) {
 				return res

@@ -3,17 +3,18 @@ import { AppError } from '../../../errors/AppError'
 import { AnimeRentDTO } from '../../../dtos/Anime/AnimeRentDTO'
 
 export class DeleteAnimeRentUseCase {
-	async execute({ animeId, userId }: AnimeRentDTO) {
+	constructor(private data: AnimeRentDTO) {}
+	async execute() {
 		try {
 			const animeExists = await database.anime.findUnique({
 				where: {
-					id: animeId,
+					id: this.data.animeId,
 				},
 			})
 
 			const userExists = await database.user.findUnique({
 				where: {
-					id: userId,
+					id: this.data.userId,
 				},
 			})
 
@@ -24,8 +25,8 @@ export class DeleteAnimeRentUseCase {
 			const animeWasRented = await database.animeRent.findUnique({
 				where: {
 					userId_animeId: {
-						animeId: animeId,
-						userId: userId,
+						animeId: this.data.animeId,
+						userId: this.data.userId,
 					},
 				},
 			})
@@ -37,8 +38,8 @@ export class DeleteAnimeRentUseCase {
 			const anime_rent = await database.animeRent.delete({
 				where: {
 					userId_animeId: {
-						animeId: animeId,
-						userId: userId,
+						animeId: this.data.animeId,
+						userId: this.data.userId,
 					},
 				},
 				select: {

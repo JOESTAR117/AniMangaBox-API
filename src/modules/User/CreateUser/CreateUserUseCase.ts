@@ -4,11 +4,12 @@ import { AppError } from '../../../errors/AppError'
 import { UserDTO } from '../../../dtos/User/UserDto'
 
 export class CreateUserUseCase {
-	async execute({ name, email, password }: UserDTO) {
+	constructor(private data: UserDTO) {}
+	async execute() {
 		try {
 			const userExists = await database.user.findUnique({
 				where: {
-					email: email,
+					email: this.data.email,
 				},
 			})
 
@@ -16,12 +17,12 @@ export class CreateUserUseCase {
 				return new AppError('User already exists!')
 			}
 
-			const hashPassword = await hash(password, 10)
+			const hashPassword = await hash(this.data.password, 10)
 
 			const user = await database.user.create({
 				data: {
-					name: name,
-					email: email,
+					name: this.data.name,
+					email: this.data.email,
 					password: hashPassword,
 				},
 			})

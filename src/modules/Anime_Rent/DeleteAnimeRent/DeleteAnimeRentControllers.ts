@@ -5,12 +5,12 @@ export class DeleteAnimeRentControllers {
 	async handle(req: Request, res: Response) {
 		const { animeId, userId } = req.body
 		try {
-			const deleteAnimeRentUseCase = new DeleteAnimeRentUseCase()
-
-			const result = await deleteAnimeRentUseCase.execute({
+			const deleteAnimeRentUseCase = new DeleteAnimeRentUseCase({
 				animeId,
 				userId,
 			})
+
+			await deleteAnimeRentUseCase.execute()
 
 			return res
 				.status(200)

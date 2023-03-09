@@ -3,11 +3,12 @@ import { AppError } from '../../../errors/AppError'
 import { AnimeDTO } from '../../../dtos/Anime/AnimeDTO'
 
 export class CreateAnimeUseCase {
-	async execute({ title, description, episodes, release_date }: AnimeDTO) {
+	constructor(private data: AnimeDTO) {}
+	async execute() {
 		try {
 			const animeExists = await database.anime.findFirst({
 				where: {
-					title: title,
+					title: this.data.title,
 				},
 			})
 
@@ -17,10 +18,10 @@ export class CreateAnimeUseCase {
 
 			const anime = await database.anime.create({
 				data: {
-					title: title,
-					description: description,
-					episodes: episodes,
-					release_date: release_date,
+					title: this.data.title,
+					description: this.data.description,
+					episodes: this.data.episodes,
+					release_date: this.data.release_date,
 				},
 			})
 			if (

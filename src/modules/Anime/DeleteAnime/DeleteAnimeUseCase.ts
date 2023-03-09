@@ -2,10 +2,11 @@ import { database } from '../../../database/database'
 import { DeleteAnimeDTO } from '../../../dtos/Anime/DeleteAnimeDTO'
 
 export class DeleteAnimeUseCase {
-	async execute({ id }: DeleteAnimeDTO) {
+	constructor(private data: DeleteAnimeDTO) {}
+	async execute() {
 		const anime = await database.anime.delete({
 			where: {
-				id: id,
+				id: this.data.id,
 			},
 		})
 

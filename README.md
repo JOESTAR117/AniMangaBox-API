@@ -13,7 +13,7 @@ API para criações de animes e usuarios, e com o sistema de alugar animes e man
 <br>Api para uso
 </h1>
 
-<p>https://alugueis-animes-api-git-dev-joestar117.vercel.app/user</p>
+<p>https://ani-manga-box-api.vercel.app/anime</p>
 
 
 <br>
